@@ -39,7 +39,7 @@ export default function Footer() {
               <span className="absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full"></span>
             </h3>
             <ul className="space-y-4">
-              {["Home", "Services", "Projects", "About Us", "Contact", "Blog"].map((link) => (
+              {["Home", "Services", "Projects", "About Us", "Contact"].map((link) => (
                 <li key={link}>
                   <Link
                     to={link === "Home" ? "/" : `/${link.toLowerCase().replace(" ", "-")}`}

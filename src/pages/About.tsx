@@ -199,7 +199,7 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* HORIZONTAL TIMELINE */}
+      {/* HORIZONTAL TIMELINE (Desktop) */}
       <section className="py-24 bg-gray-50 relative overflow-hidden hidden md:block">
         <div className="max-w-[1400px] mx-auto px-6 md:px-20 relative">
           <div className="relative h-[400px] flex items-center">
@@ -237,6 +237,35 @@ export default function About() {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VERTICAL TIMELINE (Mobile) */}
+      <section className="py-16 bg-gray-50 relative overflow-hidden block md:hidden">
+        <div className="max-w-[1400px] mx-auto px-6 relative">
+          <div className="relative border-l-4 border-gray-200 ml-4">
+            {timelineData.map((item, i) => (
+              <div key={i} className="mb-10 ml-8 relative group">
+                {/* Node */}
+                <div className="absolute -left-[42px] top-1 w-6 h-6 rounded-full bg-white border-4 border-primary z-20 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(254,22,31,0.5)]">
+                  <div className="absolute -inset-2 rounded-full border-2 border-primary opacity-0 group-hover:opacity-100 group-hover:animate-[ping_1.5s_ease-out_infinite]" />
+                </div>
+
+                {/* Card */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-primary/30"
+                >
+                  <div className="bg-gray-100 text-primary font-bold px-4 py-1 rounded-full inline-block mb-4 text-sm group-hover:bg-primary group-hover:text-white transition-colors">{item.year}</div>
+                  <h4 className="font-montserrat font-bold text-lg mb-2">{item.title}</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </motion.div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
